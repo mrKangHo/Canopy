@@ -24,6 +24,19 @@ A native macOS menu-bar app that plays looping nature footage from [Pixabay](htt
 - Xcode 15+ (for building)
 - A free [Pixabay API key](https://pixabay.com/api/docs/) — Canopy doesn't ship a shared key, so you'll paste your own into Settings on first launch
 
+## Installation
+
+Install via Homebrew — this repository doubles as its own tap, so no separate tap repo is needed:
+
+```bash
+brew tap mrKangHo/canopy https://github.com/mrKangHo/Canopy
+brew install --cask canopy
+```
+
+Releases are ad-hoc signed, not notarized by Apple, so the first launch will be blocked by Gatekeeper as "from an unidentified developer." Right-click `Canopy.app` in `/Applications` and choose **Open** once to allow it — only needed the first time.
+
+To update to a new release: `brew upgrade --cask canopy`.
+
 ## Building
 
 The project is generated from `project.yml` via [XcodeGen](https://github.com/yonaskolb/XcodeGen):
@@ -53,6 +66,8 @@ Resources/
   Localizable.xcstrings String Catalog (en/ko/ja/zh-Hans)
 docs/
   icon.png, screenshots/ Images used in this README (not part of the app bundle)
+Casks/
+  canopy.rb              Homebrew Cask — lets this repo serve as its own tap
 ```
 
 The desktop wallpaper itself is rendered by a borderless `NSWindow` pinned one level below the Finder desktop-icon layer on each screen (`WallpaperWindow/WallpaperWindowController.swift`) — it never touches the system desktop-picture API, so it isn't affected by macOS's periodic tightening of that API's permissions.
@@ -64,5 +79,5 @@ Video content is streamed from Pixabay and cached locally after first playback, 
 ## Known limitations
 
 - Pixabay's video API caps out at 4K (3840×2160) — there's currently no free source of genuine 8K footage suitable for this app; see the in-repo discussion if you're evaluating alternatives
-- Distributed via direct Developer ID signing (not sandboxed / not on the Mac App Store) — desktop-level window placement and the current caching approach would need adjustment for App Sandbox
+- Releases are ad-hoc signed (no Apple Developer Program membership behind this build) and not notarized, not sandboxed, and not on the Mac App Store — desktop-level window placement and the current caching approach would need adjustment for App Sandbox
 - `CGDirectDisplayID`-based per-display memory is best-effort across reconnects/reboots, matching typical wallpaper-app behavior, not guaranteed by Apple
