@@ -7,7 +7,7 @@ cask "canopy" do
   desc "Live nature-video wallpaper for macOS, powered by Pixabay"
   homepage "https://github.com/mrKangHo/Canopy"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "Canopy.app"
 
