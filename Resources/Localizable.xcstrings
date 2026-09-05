@@ -1,0 +1,384 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add to Collection" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "コレクションに追加" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "컬렉션에 추가" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "添加到收藏" } }
+      }
+    },
+    "Add your Pixabay API key to get started." : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "開始するにはPixabay APIキーを追加してください。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "시작하려면 Pixabay API 키를 추가하세요." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "添加您的 Pixabay API 密钥以开始使用。" } }
+      }
+    },
+    "All" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "すべて" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "전체" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "全部" } }
+      }
+    },
+    "Animals" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動物" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "동물" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "动物" } }
+      }
+    },
+    "Back" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "戻る" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "뒤로" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "返回" } }
+      }
+    },
+    "Backgrounds" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "背景" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "배경" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "背景" } }
+      }
+    },
+    "Behavior" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動作" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "동작" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "行为" } }
+      }
+    },
+    "Close Search Results" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "検索結果を閉じる" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "검색 결과 닫기" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "关闭搜索结果" } }
+      }
+    },
+    "Collection" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "コレクション" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "컬렉션" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "收藏" } }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "完了" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "완료" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "完成" } }
+      }
+    },
+    "Download failed: %@" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ダウンロードに失敗しました: %@" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다운로드 실패: %@" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下载失败：%@" } }
+      }
+    },
+    "Downloading…" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ダウンロード中…" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다운로드 중…" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下载中…" } }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "編集" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "편집" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "编辑" } }
+      }
+    },
+    "Get a free API key at pixabay.com/api/docs" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "pixabay.com/api/docs で無料のAPIキーを取得" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "pixabay.com/api/docs에서 무료 API 키 발급받기" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "在 pixabay.com/api/docs 获取免费 API 密钥" } }
+      }
+    },
+    "Large (4K)" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "高 (4K)" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "높음 (4K)" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "高 (4K)" } }
+      }
+    },
+    "Launch at Login" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ログイン時に起動" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "로그인 시 자동 실행" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "登录时启动" } }
+      }
+    },
+    "Load More" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "もっと見る" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "더 보기" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "加载更多" } }
+      }
+    },
+    "Medium (1080p)" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "中 (1080p)" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "보통 (1080p)" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "中 (1080p)" } }
+      }
+    },
+    "Move Earlier" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "前へ移動" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "앞으로 이동" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "前移" } }
+      }
+    },
+    "Move Later" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "後へ移動" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "뒤로 이동" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "后移" } }
+      }
+    },
+    "Mute" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ミュート" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "음소거" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "静音" } }
+      }
+    },
+    "My Collection" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マイコレクション" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "내 컬렉션" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "我的收藏" } }
+      }
+    },
+    "Nature" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "自然" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "자연" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "自然" } }
+      }
+    },
+    "Next Video" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "次の動画" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다음 영상" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "下一个视频" } }
+      }
+    },
+    "No results yet — press Return to search." : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "結果はまだありません — Returnキーを押して検索してください。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "아직 결과가 없습니다 — Return 키를 눌러 검색하세요." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暂无结果 — 按回车键搜索。" } }
+      }
+    },
+    "Nothing playing" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再生中の項目はありません" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "재생 중인 항목 없음" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "当前未播放" } }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "開く" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "열기" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开" } }
+      }
+    },
+    "Open Settings" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定を開く" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "설정 열기" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "打开设置" } }
+      }
+    },
+    "Pause" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "一時停止" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "일시정지" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "暂停" } }
+      }
+    },
+    "Pause while on battery power" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バッテリー使用中は一時停止" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "배터리 사용 중 일시정지" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "使用电池时暂停" } }
+      }
+    },
+    "Paste your Pixabay API key" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay APIキーを貼り付け" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay API 키를 붙여넣으세요" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "粘贴您的 Pixabay API 密钥" } }
+      }
+    },
+    "Pixabay API Key" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay APIキー" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay API 키" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay API 密钥" } }
+      }
+    },
+    "Pixabay API key is not set. Add your key in Settings." : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay APIキーが設定されていません。設定でキーを追加してください。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay API 키가 설정되지 않았습니다. 설정에서 키를 추가하세요." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "尚未设置 Pixabay API 密钥。请在设置中添加密钥。" } }
+      }
+    },
+    "Pixabay request failed (HTTP %lld)." : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pixabayリクエストが失敗しました(HTTP %lld)。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay 요청이 실패했습니다 (HTTP %lld)." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay 请求失败（HTTP %lld）。" } }
+      }
+    },
+    "Pixabay returned an unexpected response." : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Pixabayから予期しない応答が返されました。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay가 예기치 않은 응답을 반환했습니다." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "Pixabay 返回了意外的响应。" } }
+      }
+    },
+    "Play" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再生" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "재생" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "播放" } }
+      }
+    },
+    "Playback" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再生" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "재생" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "播放" } }
+      }
+    },
+    "Playing" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再生中" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "재생 중" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "正在播放" } }
+      }
+    },
+    "Previous Video" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "前の動画" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "이전 영상" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "上一个视频" } }
+      }
+    },
+    "Quality" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "画質" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "화질" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "画质" } }
+      }
+    },
+    "Quit Canopy" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Canopyを終了" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "Canopy 종료" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "退出 Canopy" } }
+      }
+    },
+    "Remove %@ from Collection" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%@をコレクションから削除" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "컬렉션에서 제거: %@" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "从收藏中移除%@" } }
+      }
+    },
+    "Remove from Collection" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "コレクションから削除" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "컬렉션에서 제거" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "从收藏中移除" } }
+      }
+    },
+    "Results for “%@”" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "「%@」の検索結果" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "“%@” 검색 결과" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "“%@”的搜索结果" } }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "検索" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "검색" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "搜索" } }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "설정" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "设置" } }
+      }
+    },
+    "Small (720p)" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "低 (720p)" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "낮음 (720p)" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "低 (720p)" } }
+      }
+    },
+    "Tiny (540p)" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "最小 (540p)" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "최소 (540p)" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "最小 (540p)" } }
+      }
+    },
+    "Travel" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "旅行" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "여행" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "旅行" } }
+      }
+    },
+    "Unmute" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ミュート解除" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "음소거 해제" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "取消静音" } }
+      }
+    },
+    "Untitled" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "無題" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "제목 없음" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "无标题" } }
+      }
+    },
+    "Video" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動画" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "영상" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "视频" } }
+      }
+    },
+    "Video content via Pixabay" : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "動画コンテンツ提供: Pixabay" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "영상 콘텐츠 제공: Pixabay" } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "视频内容由 Pixabay 提供" } }
+      }
+    },
+    "Videos you download will show up here." : {
+      "localizations" : {
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ダウンロードした動画はここに表示されます。" } },
+        "ko" : { "stringUnit" : { "state" : "translated", "value" : "다운로드한 영상이 여기에 표시됩니다." } },
+        "zh-Hans" : { "stringUnit" : { "state" : "translated", "value" : "您下载的视频将显示在这里。" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
