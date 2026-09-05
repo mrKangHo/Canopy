@@ -1,4 +1,8 @@
 <p align="center">
+  <b>English</b> · <a href="README.ko.md">한국어</a> · <a href="README.ja.md">日本語</a> · <a href="README.zh-Hans.md">简体中文</a>
+</p>
+
+<p align="center">
   <img src="docs/icon.png" width="128" height="128" alt="Canopy app icon">
 </p>
 
