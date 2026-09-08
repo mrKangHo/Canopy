@@ -3,7 +3,7 @@ import Foundation
 /// Downloads the selected video once to local disk and always plays from the
 /// local file — this satisfies Pixabay's "no permanent hotlinking" API term
 /// and means playback survives network hiccups and app relaunches.
-final class VideoCacheManager {
+final class VideoCacheManager: @unchecked Sendable {
     static let shared = VideoCacheManager()
 
     private let cacheDirectory: URL

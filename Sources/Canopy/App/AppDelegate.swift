@@ -8,7 +8,7 @@ import AppKit
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem!
-    private let manager = WallpaperManager()
+    private let manager = AppDIContainer.shared.makeWallpaperManager()
     private let statusMenu = NSMenu()
     private var playPauseItem: NSMenuItem!
 
