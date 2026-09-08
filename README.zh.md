@@ -7,14 +7,14 @@
 <h1 align="center">Canopy</h1>
 
 <p align="center">
-  Pixabayの自然映像をmacOSのライブ壁紙としてループ再生するメニューバーアプリ
+  将 Pixabay 上的高清自然视频循环播放为真实桌面动态壁纸的 macOS 菜单栏应用
 </p>
 
 <p align="center">
   <img src="docs/screenshot.png" alt="Canopy Screenshot" width="800" />
 </p>
 
-## インストール
+## 安装指南
 
 ### Homebrew
 ```bash
