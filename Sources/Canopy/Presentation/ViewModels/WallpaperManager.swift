@@ -74,39 +74,35 @@ final class WallpaperManager: ObservableObject {
     let powerMonitor = PowerStateMonitor()
     let launchAtLogin = LaunchAtLoginManager()
 
-    private let windowManager = WallpaperWindowManager()
-    private let client = PixabayClient()
-    private let defaults = UserDefaults.standard
+    private let fetchVideosUseCase: FetchVideosUseCaseProtocol
+    private let manageWallpaperUseCase: ManageWallpaperUseCaseProtocol
+    private let manageCollectionUseCase: ManageCollectionUseCaseProtocol
     private var cancellables: Set<AnyCancellable> = []
     private let perPage = 30
 
-    private enum DefaultsKey {
-        static let wallpaperByDisplay = "wallpaperByDisplay"
-        static let quality = "wallpaperQuality"
-        static let isMuted = "isMuted"
-        static let pauseOnBattery = "pauseOnBattery"
-        static let collection = "collection"
-    }
+    init(
+        fetchVideosUseCase: FetchVideosUseCaseProtocol? = nil,
+        manageWallpaperUseCase: ManageWallpaperUseCaseProtocol? = nil,
+        manageCollectionUseCase: ManageCollectionUseCaseProtocol? = nil
+    ) {
+        let fetchUseCase = fetchVideosUseCase ?? AppDIContainer.shared.fetchVideosUseCase
+        let wallpaperUseCase = manageWallpaperUseCase ?? AppDIContainer.shared.manageWallpaperUseCase
+        let collectionUseCase = manageCollectionUseCase ?? AppDIContainer.shared.manageCollectionUseCase
 
-    init() {
+        self.fetchVideosUseCase = fetchUseCase
+        self.manageWallpaperUseCase = wallpaperUseCase
+        self.manageCollectionUseCase = collectionUseCase
+
         apiKey = APIKeyStore.load() ?? ""
-        isMuted = defaults.bool(forKey: DefaultsKey.isMuted)
-        quality = PixabayVideo.Quality(rawValue: defaults.string(forKey: DefaultsKey.quality) ?? "") ?? .medium
-        powerMonitor.pauseOnBattery = defaults.bool(forKey: DefaultsKey.pauseOnBattery)
 
-        if let data = defaults.data(forKey: DefaultsKey.collection),
-           let saved = try? JSONDecoder().decode([PixabayVideo].self, from: data) {
-            collection = saved
-        }
-        if let data = defaults.data(forKey: DefaultsKey.wallpaperByDisplay),
-           let stringKeyed = try? JSONDecoder().decode([String: PixabayVideo].self, from: data) {
-            wallpaperByDisplay = Dictionary(uniqueKeysWithValues: stringKeyed.compactMap { key, value in
-                CGDirectDisplayID(key).map { ($0, value) }
-            })
-        }
+        let state = wallpaperUseCase.loadSavedState()
+        wallpaperByDisplay = state.wallpaperByDisplay
+        collection = state.collection
+        quality = state.quality
+        isMuted = state.isMuted
+        powerMonitor.pauseOnBattery = state.pauseOnBattery
 
-        windowManager.setMuted(isMuted)
-        windowManager.onScreensChanged = { [weak self] in self?.refreshDisplays() }
+        wallpaperUseCase.onScreensChanged = { [weak self] in self?.refreshDisplays() }
         refreshDisplays()
 
         powerMonitor.$shouldPause
@@ -114,9 +110,9 @@ final class WallpaperManager: ObservableObject {
             .sink { [weak self] shouldPause in
                 guard let self else { return }
                 if shouldPause {
-                    self.windowManager.pause()
+                    self.manageWallpaperUseCase.pause()
                 } else if self.isPlaying {
-                    self.windowManager.play()
+                    self.manageWallpaperUseCase.play()
                 }
             }
             .store(in: &cancellables)
@@ -130,7 +126,7 @@ final class WallpaperManager: ObservableObject {
         get { powerMonitor.pauseOnBattery }
         set {
             powerMonitor.pauseOnBattery = newValue
-            defaults.set(newValue, forKey: DefaultsKey.pauseOnBattery)
+            manageWallpaperUseCase.savePauseOnBattery(newValue)
         }
     }
 
@@ -150,8 +146,8 @@ final class WallpaperManager: ObservableObject {
         // reconnecting a previously-known display.
         for display in screens {
             guard let video = wallpaperByDisplay[display.id],
-                  let cached = VideoCacheManager.shared.cachedFile(for: video, quality: quality) else { continue }
-            windowManager.setWallpaper(fileURL: cached, for: display.id)
+                  let cached = manageWallpaperUseCase.getCachedFile(for: video, quality: quality) else { continue }
+            manageWallpaperUseCase.setWallpaper(fileURL: cached, for: display.id)
         }
     }
 
@@ -212,7 +208,7 @@ final class WallpaperManager: ObservableObject {
                 }
             }
             do {
-                let response = try await fetchCategoryPage(id, page: nextPage)
+                let response = try await fetchVideosUseCase.fetchCategory(category: id, page: nextPage, perPage: perPage, apiKey: apiKey)
                 guard let idx = self.categorySections.firstIndex(where: { $0.id == id }) else { return }
                 self.categorySections[idx].videos.append(contentsOf: response.hits)
                 self.categorySections[idx].page = nextPage
@@ -225,19 +221,10 @@ final class WallpaperManager: ObservableObject {
 
     private func fetchCategorySafely(_ category: String) async -> (response: PixabaySearchResponse?, error: Error?) {
         do {
-            return (try await fetchCategoryPage(category, page: 1), nil)
+            return (try await fetchVideosUseCase.fetchCategory(category: category, page: 1, perPage: perPage, apiKey: apiKey), nil)
         } catch {
             return (nil, error)
         }
-    }
-
-    private func fetchCategoryPage(_ category: String, page: Int) async throws -> PixabaySearchResponse {
-        if let cached = await SearchResultsCache.shared.value(query: "", category: category, page: page) {
-            return cached
-        }
-        let response = try await client.search(query: "", category: category, page: page, perPage: perPage, apiKey: apiKey)
-        await SearchResultsCache.shared.store(response, query: "", category: category, page: page)
-        return response
     }
 
     // MARK: - Search
@@ -251,7 +238,7 @@ final class WallpaperManager: ObservableObject {
             errorMessage = nil
             defer { isSearching = false }
             do {
-                let response = try await fetchSearchPage(query: query, page: 1)
+                let response = try await fetchVideosUseCase.search(query: query, page: 1, perPage: perPage, apiKey: apiKey)
                 searchResults = response.hits
                 searchTotalHits = response.totalHits
             } catch {
@@ -268,7 +255,7 @@ final class WallpaperManager: ObservableObject {
         Task {
             defer { isLoadingMoreSearch = false }
             do {
-                let response = try await fetchSearchPage(query: query, page: nextPage)
+                let response = try await fetchVideosUseCase.search(query: query, page: nextPage, perPage: perPage, apiKey: apiKey)
                 searchResults.append(contentsOf: response.hits)
                 searchPage = nextPage
                 searchTotalHits = response.totalHits
@@ -278,28 +265,19 @@ final class WallpaperManager: ObservableObject {
         }
     }
 
-    private func fetchSearchPage(query: String, page: Int) async throws -> PixabaySearchResponse {
-        if let cached = await SearchResultsCache.shared.value(query: query, category: nil, page: page) {
-            return cached
-        }
-        let response = try await client.search(query: query, category: nil, page: page, perPage: perPage, apiKey: apiKey)
-        await SearchResultsCache.shared.store(response, query: query, category: nil, page: page)
-        return response
-    }
-
     // MARK: - Selection / playback
 
     func select(_ video: PixabayVideo, for scope: DisplaySelection? = nil) {
         let ids = displayIDs(for: scope ?? selectedScope)
         guard !ids.isEmpty else { return }
         for id in ids { wallpaperByDisplay[id] = video }
-        persistWallpaperByDisplay()
+        manageWallpaperUseCase.saveWallpaperByDisplay(wallpaperByDisplay)
         Task { await loadAndPlay(video, quality: quality, for: ids) }
     }
 
     func setQuality(_ newQuality: PixabayVideo.Quality) {
         quality = newQuality
-        defaults.set(newQuality.rawValue, forKey: DefaultsKey.quality)
+        manageWallpaperUseCase.saveQuality(newQuality)
         // Each targeted display keeps whatever video it already has — just
         // re-fetched/applied at the new quality (displays may differ under
         // `.all` if they were set individually before).
@@ -312,8 +290,8 @@ final class WallpaperManager: ObservableObject {
     private func loadAndPlay(_ video: PixabayVideo, quality: PixabayVideo.Quality, for displayIDs: [CGDirectDisplayID]) async {
         guard !displayIDs.isEmpty else { return }
         errorMessage = nil
-        if let cached = VideoCacheManager.shared.cachedFile(for: video, quality: quality) {
-            for id in displayIDs { windowManager.setWallpaper(fileURL: cached, for: id) }
+        if let cached = manageWallpaperUseCase.getCachedFile(for: video, quality: quality) {
+            for id in displayIDs { manageWallpaperUseCase.setWallpaper(fileURL: cached, for: id) }
             isPlaying = true
             addToCollection(video)
             return
@@ -321,8 +299,8 @@ final class WallpaperManager: ObservableObject {
         for id in displayIDs { downloadingDisplayIDs.insert(id) }
         defer { for id in displayIDs { downloadingDisplayIDs.remove(id) } }
         do {
-            let fileURL = try await VideoCacheManager.shared.fetch(video, quality: quality)
-            for id in displayIDs { windowManager.setWallpaper(fileURL: fileURL, for: id) }
+            let fileURL = try await manageWallpaperUseCase.fetchVideoFile(video, quality: quality)
+            for id in displayIDs { manageWallpaperUseCase.setWallpaper(fileURL: fileURL, for: id) }
             isPlaying = true
             addToCollection(video)
         } catch {
@@ -333,16 +311,16 @@ final class WallpaperManager: ObservableObject {
     func togglePlayPause() {
         isPlaying.toggle()
         if isPlaying {
-            windowManager.play()
+            manageWallpaperUseCase.play()
         } else {
-            windowManager.pause()
+            manageWallpaperUseCase.pause()
         }
     }
 
     func toggleMute() {
         isMuted.toggle()
-        defaults.set(isMuted, forKey: DefaultsKey.isMuted)
-        windowManager.setMuted(isMuted)
+        manageWallpaperUseCase.saveMuted(isMuted)
+        manageWallpaperUseCase.setMuted(isMuted)
     }
 
     // MARK: - Collection
@@ -350,7 +328,7 @@ final class WallpaperManager: ObservableObject {
     private func addToCollection(_ video: PixabayVideo) {
         guard !collection.contains(where: { $0.id == video.id }) else { return }
         collection.insert(video, at: 0)
-        persistCollection()
+        manageCollectionUseCase.saveCollection(collection)
     }
 
     func isInCollection(_ video: PixabayVideo) -> Bool {
@@ -367,25 +345,12 @@ final class WallpaperManager: ObservableObject {
 
     func removeFromCollection(_ video: PixabayVideo) {
         collection.removeAll { $0.id == video.id }
-        persistCollection()
-        VideoCacheManager.shared.delete(video)
+        manageCollectionUseCase.saveCollection(collection)
+        manageCollectionUseCase.deleteCachedVideo(video)
     }
 
     func reorderCollection(_ newOrder: [PixabayVideo]) {
         collection = newOrder
-        persistCollection()
-    }
-
-    private func persistCollection() {
-        guard let data = try? JSONEncoder().encode(collection) else { return }
-        defaults.set(data, forKey: DefaultsKey.collection)
-    }
-
-    // MARK: - Persistence
-
-    private func persistWallpaperByDisplay() {
-        let stringKeyed = Dictionary(uniqueKeysWithValues: wallpaperByDisplay.map { (String($0.key), $0.value) })
-        guard let data = try? JSONEncoder().encode(stringKeyed) else { return }
-        defaults.set(data, forKey: DefaultsKey.wallpaperByDisplay)
+        manageCollectionUseCase.saveCollection(collection)
     }
 }
